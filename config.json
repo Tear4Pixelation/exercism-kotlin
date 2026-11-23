@@ -62,6 +62,7 @@
         "uuid": "06183285-11e6-4f6a-b2a2-f33964996ddd",
         "concepts": ["lists"],
         "prerequisites": ["basics"],
+        "status": "wip"
       },
       {
         "slug": "johannes-juice-maker",
