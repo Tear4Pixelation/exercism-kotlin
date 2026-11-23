@@ -1,9 +1,8 @@
-import org.junit.Before
-import org.junit.Ignore
-import org.junit.Test
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class MessengerTest {
+class MessagesAfterCollapseTest {
 
     val rooftopChat = listOf(
         "Are you safe?",
@@ -27,7 +26,7 @@ class MessengerTest {
         "Hello?"
     )
 
-    @Before
+    @BeforeTest
     fun setUp() {
         Messenger.messages.clear()
     }

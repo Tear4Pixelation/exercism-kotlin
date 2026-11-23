@@ -1,5 +1,5 @@
 object Messenger {
-    val messages = TODO("Implement the messages list")  // Please keep the name.
+    // Add a property called messages that stores the chat history
 
     fun sendMessage(message: String) {
         TODO("Implement the send message function")
