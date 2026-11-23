@@ -1,4 +1,12 @@
 include(
+    "concept:annalyns-infiltration",
+    "concept:johannes-juice-maker",
+    "concept:log-levels",
+    "concept:lucians-luscious-lasagna",
+    "concept:secrets",
+    "concept:secret-agent",
+    "concept:tim-from-marketing",
+    "concept:vehicle-purchase",
     "practice:accumulate",
     "practice:acronym",
     "practice:all-your-base",
@@ -104,7 +112,7 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             when (requested.id.id) {
-                "org.jetbrains.kotlin.jvm" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0")
+                "org.jetbrains.kotlin.jvm" -> useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:2.4.0")
             }
         }
     }

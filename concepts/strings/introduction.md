@@ -6,27 +6,63 @@ A [`string`][ref-string] in Kotlin is an immutable sequence of Unicode character
 
 [`Unicode`][wiki-unicode] means that most of the world's writing systems can be represented, but (in contrast to older languages such as C) there is no 1:1 mapping between characters and bytes.
 
-A string is usually surrounded by double-quotes `" "`.
+A string is surrounded by double-quotes `" "`.
 
-Some characters need escaping: `\'`, `\\`, plus the usual non-printing characters such as `\t` (tab) and `\n` (newline).
+Some characters need escaping: `\\`, plus the usual non-printing characters such as `\t` (tab) and `\n` (newline).
 
 ```kotlin
-val s = "Escape apostrophe \' and backslash \\."
-// Escape apostrophe ' and backslash \.
+val s = "Escape backslash \\."
+// Escape backslash \.
 ```
 
-Raw strings use 3 double-quotes, and can contain arbitrary text (no need for escaping).
-Multiline strings are also supported, including flexible handling of indents.
+Multi-line strings are surrounded by 3 double-quotes, and can contain arbitrary text (no need for escaping).
 
 ```kotlin
 val multi = """I'm a
-    |multi-line
-    |string with special characters \ \t """
-
-multi.trimMargin()  // delimiter defaults to | but can be specified
+    multi-line
+    string with special characters \ \t """
 //I'm a
-//multi-line
-//string with special characters  \ \t 
+//    multi-line
+//    string with special characters  \ \t 
+```
+
+Use [trimIndent][trimIndent-doc] to remove the common indenting from the lines.
+This is useful for formatting the string:
+
+```kotlin
+val multi = """
+    I'm a
+      multi-line
+    string""".trimIndent()
+
+//I'm a
+//  multi-line
+//string
+```
+
+Alternatively, [trimMargin][trimMargin-doc] lets you specify a delimiter.
+Each line in the `String` then begins after the delimiter.
+The delimiter defaults to `|`, but you can specify a different delimiter as a parameter.
+For example:
+
+```kotlin
+val multi = """
+    |I'm a
+    |  multi-line
+    |string""".trimMargin()
+
+//I'm a
+//  multi-line
+//string
+
+val multi2 = """
+    start>I'm a
+    start>  multi-line
+    start>string""".trimMargin("start>")
+
+//I'm a
+//  multi-line
+//string
 ```
 
 Strings can be concatenated with `+`, but this is best limited to short and simple cases.
@@ -56,12 +92,12 @@ Mostly, these are [`extensions functions`][ref-extensions] rather than members o
 
 ~~~~exercism/note
 Kotlin's rather complex [documentation][ref-string-functions] pages hide extension functions in the default view.
-Be sure to click `Members and Extensions` to expand this section.
+Be sure to click `Members & Extensions` to expand this section.
 
 [ref-string-functions]: https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/
 ~~~~
 
-The following example shows just a small selection of what is available:
+The following examples show just a small selection of what is available:
 
 ```kotlin
 val str = "Hello World!"
@@ -70,15 +106,19 @@ str.length              // => 12 (a property, not a function)
 str.elementAt(6)        // => W
 str.elementAtOrNull(20) // => null (index out of range)
 str.substring(6, 11)    // => "World"
+str.substringAfter(" ") // => "World!"
 
-str.lowercase()        // => "hello world!"
-str.uppercase()        // => "HELLO WORLD!"
+str.lowercase()         // => "hello world!"
+str.uppercase()         // => "HELLO WORLD!"
 
-str.startsWith("Hel")  // => true
-str.endsWith("xyz")    // => false
+str.startsWith("Hel")   // => true
+str.endsWith("xyz")     // => false
+str.indexOf("0")        // => 4
 
-str.toCharArray()      // => [H, e, l, l, o,  , W, o, r, l, d, !]
-"42".toInt() + 1       // => 43  (parsing; see also toFloat)
+str.toCharArray()       // => [H, e, l, l, o,  , W, o, r, l, d, !]
+"42".toInt() + 1        // => 43  (parsing; see also toFloat)
+
+"Howdy!  ".trim()       // => "Howdy"
 ```
 
 
@@ -88,3 +128,5 @@ str.toCharArray()      // => [H, e, l, l, o,  , W, o, r, l, d, !]
 [ref-stringbuilder]: https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/
 [ref-extensions]: https://kotlinlang.org/docs/extensions.html#extensions.md
 [ref-string-functions]: https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/
+[trimIndent-doc]: https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/trim-indent.html
+[trimMargin-doc]: https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/trim-margin.html
