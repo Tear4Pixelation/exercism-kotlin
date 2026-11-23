@@ -61,7 +61,7 @@ for (item in list) {
 #### With index
 Often you need to know the index of the item you are currently dealing with in the loop. For this you use [`for` and `list.withIndex()`][ref-for-withIndex]
 ```kotlin
-for ((index, item) in list.withIndex()) {}
+for ((index, item) in list.withIndex()) {
     // Do something with the item and the index
 }
 ```

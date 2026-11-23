@@ -15,6 +15,13 @@ class MessagesAfterCollapseTest {
         "Yes, I know. I am scouting town for resources right now."
     )
 
+    val waterChat = listOf(
+        "Did anyone find water?",
+        "Meet me at the ex-exercism hq at noon.",
+        "I have some food, but no water.",
+        "The river north of town still has water in it."
+    )
+
     val foundSomething = listOf(
         "I found some canned food in an abandoned supermarket",
         "GREAT! Bring as much as you can",
@@ -66,5 +73,31 @@ class MessagesAfterCollapseTest {
     fun `test send message and all messages together`() {
         lastChat.forEach { Messenger.sendMessage(it) }
         assertEquals(lastChat, Messenger.allMessages())
+    }
+
+    @Test
+    fun `test search messages`() {
+        Messenger.messages.addAll(waterChat)
+        assertEquals(
+            listOf(
+                "Did anyone find water?",
+                "I have some food, but no water.",
+                "The river north of town still has water in it."
+            ),
+            Messenger.searchMessages("water")
+        )
+    }
+
+    @Test
+    fun `test search messages without results`() {
+        Messenger.messages.addAll(waterChat)
+        assertEquals(listOf<String>(), Messenger.searchMessages("radio"))
+    }
+
+    @Test
+    fun `test search does not change messages`() {
+        Messenger.messages.addAll(waterChat)
+        Messenger.searchMessages("water")
+        assertEquals(waterChat, Messenger.allMessages())
     }
 }

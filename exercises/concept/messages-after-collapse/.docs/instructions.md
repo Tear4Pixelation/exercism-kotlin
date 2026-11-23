@@ -11,19 +11,37 @@ A **Kotlin** programmer.
 
 Time to build a tiny message system from scratch.
 
-
-Your objective is to get messages up and running as fast as possible, so you are not concerned with small details too much.
-You just want to:
-- send messages
-- read the latest message
-- get the list of all messages sent (and currently print them)
-- get the number of messages sent
 The messages are simply `String`s.
 
-First, implement the list that stores the messages.
-Keep in mind:
-- It must be accessible from all functions of the object.
-- You must be able to add new messages to it. 
-  - → Choose a list type that allows modification.
-
 You will not get empty message histories.
+
+Your objective is to get messages up and running as fast as possible, so you are not concerned with small details too much.
+Therefore, you settle on these six capabilities for your app:
+
+## 1. Store the messages
+
+Store the messages that have been sent.
+
+## 2. Send Messages
+
+What chat app doesn't send messages? This is an important feature.
+
+## 3. Read the latest message
+
+No use in sending if I can't receive. The most important message is the latest, so let's do that first.
+
+## 4. Get all messages
+
+If I can only receive the latest message, what happens if I miss one? Or maybe if I forgot the previous message?
+
+## 5. Count all messages
+
+Imagine we finally rebuild civilization, looking back we'd have more than 2000 messages...
+
+## 6. Search the chat for a keyword
+
+Your friends keep mentioning where they found supplies, but it's buried in the chat.
+Implement `searchMessages` so it finds every message mentioning a keyword, oldest first.
+If nobody mentioned it, return an empty list.
+
+`yourString.contains(searchString)` is the way to check whether `yourString` contains `searchString`.

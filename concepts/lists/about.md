@@ -275,7 +275,7 @@ And for this there is also `flatMapIndexed`, of course.
 ##### `apply`
 This function can be used on all kinds of objects, including lists. It allows to call functions on a list and then return the result in a neat way. Inside the `.apply { }` block, you don’t need to write `list.operation()`, you can just call `operation()`
 ```kotlin
-val list = mutableListOf()
+val list = mutableListOf<Int>()
 list.apply {
 	add(0)
 	add(2)
